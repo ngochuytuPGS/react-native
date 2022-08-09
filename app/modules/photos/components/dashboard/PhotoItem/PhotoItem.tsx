@@ -1,21 +1,24 @@
-import { StyleSheet, TouchableOpacity } from 'react-native';
+import { TouchableOpacity } from 'react-native';
 import React, { memo } from 'react';
 import FastImage from 'react-native-fast-image';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { RootStackParams } from '../../../../../Routes';
-import { ROUTES } from '../../../../configs/routes';
+import { RootStackParams } from '../../../../../../Routes';
+import { ROUTES } from '../../../../../configs/routes';
+import { styles } from './PhotoItem.styles';
+import { IPhoto } from '../../../../../models/photo';
 
 interface Props {
   uri: string;
+  id: string;
 }
 
-const PhotoItem = ({ uri }: Props) => {
+const PhotoItem = ({ id, uri }: Props) => {
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParams>>();
 
   const onGoToDetailScreen = () => {
     navigation.navigate(ROUTES.detail, {
-      uri: uri,
+      id,
     });
   };
 
@@ -25,15 +28,5 @@ const PhotoItem = ({ uri }: Props) => {
     </TouchableOpacity>
   );
 };
-
-const styles = StyleSheet.create({
-  photoContainer: {
-    flex: 1 / 3,
-  },
-  photo: {
-    flex: 1,
-    aspectRatio: 1 / 1,
-  },
-});
 
 export default memo(PhotoItem);

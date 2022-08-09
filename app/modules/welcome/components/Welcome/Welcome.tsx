@@ -1,9 +1,10 @@
-import { View, Text, StyleSheet, Button } from 'react-native';
+import { View, Text, Button } from 'react-native';
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { ROUTES } from '../../../configs/routes';
-import { RootStackParams } from '../../../../Routes';
+import { ROUTES } from '../../../../configs/routes';
+import { RootStackParams } from '../../../../../Routes';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { styles } from './Welcome.styles';
 
 interface Props {}
 
@@ -21,14 +22,5 @@ const Welcome = (props: Props) => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    display: 'flex',
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
 
 export default Welcome;
